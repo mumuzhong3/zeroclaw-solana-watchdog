@@ -1,0 +1,38 @@
+# ZeroClaw Configuration Template for Solana Wallet Watchdog
+# Copy to ~/.zeroclaw/config.toml and fill in your credentials
+
+default_provider = "openrouter"
+default_model = "anthropic/claude-sonnet-4.6"
+
+# ===== HTTP Request (Required) =====
+[http_request]
+enabled = true
+allowed_domains = [
+    "api.mainnet-beta.solana.com",
+    "solana-mainnet.core.chainstack.com",
+    "api.helius.xyz",
+    "api.coingecko.com",
+]
+max_response_size = 1000000
+timeout_secs = 30
+
+# ===== Cron Scheduler (Required for recurring checks) =====
+[cron]
+enabled = true
+max_run_history = 50
+
+# ===== Autonomy =====
+[autonomy]
+level = "supervised"
+workspace_only = true
+
+# ===== Agent Settings =====
+[agent]
+max_tool_iterations = 10
+max_history_messages = 50
+parallel_tools = false
+
+# ===== Skills =====
+[skills]
+open_skills_enabled = false
+prompt_injection_mode = "full"
